@@ -415,43 +415,49 @@
       padding: 40px;
     }
 
-    .pixel-symbol {
-      position: relative;
+    /* =========================================
+   AELION PIXEL ART ANIMATION
+========================================= */
 
-      width: 150px;
-      height: 150px;
+.aelion-stage {
+  width: 300px;
+  height: 300px;
 
-      margin-bottom: 35px;
-    }
+  display: flex;
+  justify-content: center;
+  align-items: center;
 
-    .pixel-symbol::before,
-    .pixel-symbol::after {
-      content: "";
+  position: relative;
 
-      position: absolute;
-    }
+  margin-bottom: 25px;
+}
 
-    .pixel-symbol::before {
-      width: 80px;
-      height: 80px;
+.aelion-sprite {
+  width: 32px;
+  height: 32px;
 
-      left: 35px;
-      top: 35px;
+  background-image: url("aelion-idle.png");
+  background-repeat: no-repeat;
 
-      border: 3px solid var(--cyan);
+  image-rendering: pixelated;
+  image-rendering: crisp-edges;
 
-      transform: rotate(45deg);
-    }
+  transform: scale(6);
 
-    .pixel-symbol::after {
-      width: 38px;
-      height: 38px;
+  animation: aelionIdle 0.8s steps(4) infinite;
+}
 
-      left: 56px;
-      top: 56px;
+@keyframes aelionIdle {
 
-      background: var(--cyan);
-    }
+  from {
+    background-position: 0 0;
+  }
+
+  to {
+    background-position: -128px 0;
+  }
+
+}
 
     .visual-content h3 {
       margin-bottom: 8px;
@@ -1002,16 +1008,16 @@
 
           <div class="visual-content">
 
-            <div class="pixel-symbol"></div>
+          <div class="aelion-stage">
+          <div class="aelion-sprite"></div>
+          </div>
 
-            <h3>PLAYABLE DESIGN</h3>
+          <h3>AELION — IDLE ANIMATION</h3>
 
             <p>
-              This space will display gameplay,
-              character animation and systems from
-              my projects.
+            Original character sprite and animation
+            created for Aquelarre: Crónicas de las Edades.
             </p>
-
           </div>
 
           <div class="visual-status">
