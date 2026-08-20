@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Yim Mercado | Game Designer & Generalist Developer</title>
+
+  <meta
+    name="description"
+    content="Portafolio de Yim Mercado, Game Designer & Generalist Developer especializado en diseño de videojuegos, Unity, C#, level design y pixel art."
+  >
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      background: #0c0c12;
+      color: #f5f5f5;
+      line-height: 1.6;
+    }
+
+    nav {
+      width: 100%;
+      padding: 22px 8%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      background: rgba(12, 12, 18, 0.95);
+      border-bottom: 1px solid #292934;
+      z-index: 100;
+    }
+
+    .logo {
+      font-weight: bold;
+      font-size: 1.2rem;
+    }
+
+    nav ul {
+      display: flex;
+      gap: 28px;
+      list-style: none;
+    }
+
+    nav a {
+      color: #f5f5f5;
+      text-decoration: none;
+      font-size: 0.9rem;
+    }
+
+    nav a:hover {
+      opacity: 0.7;
+    }
+
+    section {
+      padding: 100px 8%;
+    }
+
+    .hero {
+      min-height: 85vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      max-width: 1100px;
+    }
+
+    .hero-small {
+      font-size: 1rem;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      opacity: 0.7;
+      margin-bottom: 15px;
+    }
+
+    h1 {
+      font-size: clamp(3rem, 8vw, 7rem);
+      line-height: 0.95;
+      margin-bottom: 25px;
+    }
+
+    .hero h2 {
+      font-size: clamp(1.5rem, 3vw, 2.5rem);
+      font-weight: 400;
+      opacity: 0.8;
+      margin-bottom: 25px;
+    }
+
+    .hero p {
+      max-width: 720px;
+      font-size: 1.1rem;
+      color: #c7c7ce;
+    }
+
+    .buttons {
+      margin-top: 35px;
+      display: flex;
+      gap: 15px;
+      flex-wrap: wrap;
+    }
+
+    .button {
+      display: inline-block;
+      padding: 12px 22px;
+      border: 1px solid #f5f5f5;
+      color: #f5f5f5;
+      text-decoration: none;
+    }
+
+    .button:hover {
+      background: #f5f5f5;
+      color: #0c0c12;
+    }
+
+    h2.section-title {
+      font-size: 2.5rem;
+      margin-bottom: 40px;
+    }
+
+    .projects {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 30px;
+    }
+
+    .project-card {
+      border: 1px solid #292934;
+      padding: 35px;
+      min-height: 300px;
+    }
+
+    .project-card h3 {
+      font-size: 1.7rem;
+      margin-bottom: 12px;
+    }
+
+    .project-card .tags {
+      font-size: 0.9rem;
+      opacity: 0.65;
+      margin-bottom: 20px;
+    }
+
+    .project-card p {
+      color: #bdbdc6;
+    }
+
+    .about {
+      max-width: 800px;
+    }
+
+    footer {
+      padding: 50px 8%;
+      border-top: 1px solid #292934;
+      color: #9999a3;
+    }
+
+    @media (max-width: 700px) {
+      nav {
+        align-items: flex-start;
+        gap: 20px;
+      }
+
+      nav ul {
+        gap: 12px;
+        flex-wrap: wrap;
+        justify-content: flex-end;
+      }
+
+      section {
+        padding: 80px 6%;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <nav>
+    <div class="logo">YIM MERCADO</div>
+
+    <ul>
+      <li><a href="#work">WORK</a></li>
+      <li><a href="#gameplay">GAMEPLAY</a></li>
+      <li><a href="#about">ABOUT</a></li>
+      <li><a href="#contact">CONTACT</a></li>
+    </ul>
+  </nav>
+
+
+  <main>
+
+    <section class="hero">
+
+      <p class="hero-small">Game Design · Development · Pixel Art</p>
+
+      <h1>YIM<br>MERCADO</h1>
+
+      <h2>Game Designer & Generalist Developer</h2>
+
+      <p>
+        I design gameplay systems and build the prototypes that prove them.
+        My work combines Game Design, Unity/C# development, level design,
+        documentation and 2D pixel art.
+      </p>
+
+      <div class="buttons">
+        <a href="#work" class="button">VIEW MY WORK</a>
+        <a href="#gameplay" class="button">WATCH GAMEPLAY</a>
+      </div>
+
+    </section>
+
+
+    <section id="work">
+
+      <h2 class="section-title">Featured Work</h2>
+
+      <div class="projects">
+
+        <article class="project-card">
+
+          <h3>Aquelarre: Crónicas de las Edades</h3>
+
+          <p class="tags">
+            Game Design · Unity · C# · Systems Design · Pixel Art
+          </p>
+
+          <p>
+            Personal narrative action RPG developed from the ground up.
+            I handle game design, gameplay programming, production
+            documentation and 2D pixel-art development.
+          </p>
+
+        </article>
+
+
+        <article class="project-card">
+
+          <h3>Amber Studio</h3>
+
+          <p class="tags">
+            Game Design Internship · Level Design · GDD
+          </p>
+
+          <p>
+            Professional experience working remotely within multidisciplinary
+            development teams, contributing to gameplay design, level design
+            and production documentation.
+          </p>
+
+        </article>
+
+      </div>
+
+    </section>
+
+
+    <section id="gameplay">
+
+      <h2 class="section-title">Gameplay</h2>
+
+      <p>
+        Gameplay videos, prototypes and interactive systems will be displayed
+        here.
+      </p>
+
+    </section>
+
+
+    <section id="about">
+
+      <h2 class="section-title">About</h2>
+
+      <div class="about">
+
+        <p>
+          I'm Yim Mercado, a Game Designer & Generalist Developer with a
+          background in Video Game Engineering.
+        </p>
+
+        <br>
+
+        <p>
+          I specialize in transforming design concepts into playable systems,
+          combining mechanics and systems design, Unity/C# prototyping,
+          level design and production documentation with experience creating
+          2D and pixel-art assets.
+        </p>
+
+      </div>
+
+    </section>
+
+
+    <section id="contact">
+
+      <h2 class="section-title">Contact</h2>
+
+      <p>
+        Email · LinkedIn · GitHub · itch.io
+      </p>
+
+    </section>
+
+  </main>
+
+
+  <footer>
+    <p>© 2026 Yim Mercado · Game Designer & Generalist Developer</p>
+  </footer>
+
+</body>
+</html>
