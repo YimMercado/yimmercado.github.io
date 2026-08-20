@@ -702,7 +702,30 @@
       font-size: 0.83rem;
     }
 
+    /* Gameplay video */
 
+    .gameplay-card {
+      overflow: hidden;
+    }
+    
+    .gameplay-video {
+      width: calc(100% + 52px);
+      aspect-ratio: 16 / 9;
+    
+      margin:
+        -26px
+        -26px
+        24px
+        -26px;
+    
+      display: block;
+    
+      object-fit: cover;
+    
+      background: #000;
+    
+      image-rendering: pixelated;
+    }
     /* =========================================
        09. ABOUT
     ========================================= */
@@ -1152,18 +1175,28 @@
       <div class="gameplay-grid">
 
 
-        <article class="gameplay-card">
+<article class="gameplay-card">
 
-          <span class="number">01</span>
+  <video
+    class="gameplay-video"
+    autoplay
+    muted
+    loop
+    playsinline
+  >
+    <source src="aquelarre-player-movement.mp4" type="video/mp4">
+  </video>
 
-          <h3>Player Movement</h3>
+  <span class="number">01</span>
 
-          <p>
-            Directional movement, animation states,
-            collision and camera behavior.
-          </p>
+  <h3>Player Movement</h3>
 
-        </article>
+  <p>
+    Directional movement, animation states,
+    collision and camera behavior.
+  </p>
+
+</article>
 
 
         <article class="gameplay-card">
