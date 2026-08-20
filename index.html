@@ -1021,7 +1021,35 @@
         gap: 8px;
       }
     }
+    /* FIX — ART & PRODUCTION GRID */
 
+@media (min-width: 951px) {
+
+  .art-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 18px;
+  }
+
+  .art-card {
+    min-width: 0;
+  }
+
+  .art-media {
+    width: 100%;
+    aspect-ratio: 4 / 3;
+  }
+
+}
+
+@media (max-width: 950px) {
+
+  .art-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+  }
+
+}
   </style>
 </head>
 
