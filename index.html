@@ -729,6 +729,143 @@
     /* =========================================
    09. ART & PRODUCTION
 ========================================= */
+    /* =========================================
+   ART GALLERY
+========================================= */
+
+.art-media-clickable {
+  cursor: pointer;
+}
+
+.art-media-overlay {
+  position: absolute;
+  inset: 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background: rgba(5, 6, 8, 0.72);
+
+  color: var(--cyan);
+
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+
+  opacity: 0;
+  transition: opacity 0.25s ease;
+}
+
+.art-media-clickable:hover .art-media-overlay {
+  opacity: 1;
+}
+
+
+/* Fullscreen gallery */
+
+.gallery-modal {
+  position: fixed;
+  inset: 0;
+
+  z-index: 9999;
+
+  display: none;
+  align-items: center;
+  justify-content: center;
+
+  padding: 30px;
+
+  background: rgba(0, 0, 0, 0.92);
+}
+
+.gallery-modal.is-open {
+  display: flex;
+}
+
+.gallery-dialog {
+  width: min(1100px, 94vw);
+  max-height: 92vh;
+
+  padding: 18px;
+
+  overflow-y: auto;
+
+  background: #0f1118;
+  border: 1px solid var(--border);
+}
+
+.gallery-main img {
+  display: block;
+
+  width: 100%;
+  max-height: 68vh;
+
+  object-fit: contain;
+
+  background: #050608;
+}
+
+.gallery-thumbs {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 10px;
+
+  margin-top: 14px;
+}
+
+.gallery-thumb {
+  padding: 0;
+
+  overflow: hidden;
+
+  cursor: pointer;
+
+  background: #08090d;
+  border: 1px solid var(--border);
+}
+
+.gallery-thumb:hover {
+  border-color: var(--cyan);
+}
+
+.gallery-thumb img {
+  display: block;
+
+  width: 100%;
+  height: 100px;
+
+  object-fit: cover;
+}
+
+.gallery-close {
+  position: fixed;
+  top: 24px;
+  right: 30px;
+
+  z-index: 10000;
+
+  cursor: pointer;
+
+  color: white;
+  background: transparent;
+  border: 0;
+
+  font-size: 2.5rem;
+  line-height: 1;
+}
+
+body.modal-open {
+  overflow: hidden;
+}
+
+@media (max-width: 700px) {
+
+  .gallery-thumbs {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+}
     .art-3d-image {
   width: 100%;
   height: 100%;
@@ -1492,12 +1629,22 @@
 
     <article class="art-card">
 
-    <div class="art-media">
+       <div
+      class="art-media art-media-clickable"
+      onclick="open3DGallery()"
+      role="button"
+      tabindex="0"
+      onkeydown="if(event.key === 'Enter') open3DGallery()"
+    >
       <img
         class="art-3d-image"
         src="3d-apartment-environment.png"
         alt="3D apartment environment modeling project"
       >
+    
+      <span class="art-media-overlay">
+        VIEW GALLERY
+      </span>
     </div>
 
       <div class="art-content">
@@ -1658,6 +1805,167 @@
     </div>
 
   </footer>
+<!-- =========================================
+     3D MODELING GALLERY
+========================================== -->
+
+<div
+  id="gallery3d"
+  class="gallery-modal"
+  aria-hidden="true"
+>
+
+  <button
+    class="gallery-close"
+    onclick="close3DGallery()"
+    aria-label="Close gallery"
+  >
+    ×
+  </button>
+
+
+  <div class="gallery-dialog">
+
+    <div class="gallery-main">
+
+      <img
+        id="gallery3d-main"
+        src="3d-apartment-environment.png"
+        alt="3D apartment environment overview"
+      >
+
+    </div>
+
+
+    <div class="gallery-thumbs">
+
+      <button
+        class="gallery-thumb"
+        onclick="set3DGalleryImage(
+          '3d-apartment-environment.png',
+          '3D apartment environment overview'
+        )"
+      >
+        <img
+          src="3d-apartment-environment.png"
+          alt="Apartment overview thumbnail"
+        >
+      </button>
+
+
+      <button
+        class="gallery-thumb"
+        onclick="set3DGalleryImage(
+          '3d-apartment-closeup.png',
+          '3D apartment environment close-up'
+        )"
+      >
+        <img
+          src="3d-apartment-closeup.png"
+          alt="Apartment close-up thumbnail"
+        >
+      </button>
+
+
+      <button
+        class="gallery-thumb"
+        onclick="set3DGalleryImage(
+          '3d-robot-front.png',
+          '3D robot front view'
+        )"
+      >
+        <img
+          src="3d-robot-front.png"
+          alt="Robot front thumbnail"
+        >
+      </button>
+
+
+      <button
+        class="gallery-thumb"
+        onclick="set3DGalleryImage(
+          '3d-robot-back.png',
+          '3D robot back view'
+        )"
+      >
+        <img
+          src="3d-robot-back.png"
+          alt="Robot back thumbnail"
+        >
+      </button>
+
+
+      <button
+        class="gallery-thumb"
+        onclick="set3DGalleryImage(
+          '3d-robot-side.png',
+          '3D robot side view'
+        )"
+      >
+        <img
+          src="3d-robot-side.png"
+          alt="Robot side thumbnail"
+        >
+      </button>
+
+    </div>
+
+  </div>
+
+</div>
+
+
+<script>
+
+  function open3DGallery() {
+
+    const gallery = document.getElementById("gallery3d");
+
+    gallery.classList.add("is-open");
+    gallery.setAttribute("aria-hidden", "false");
+
+    document.body.classList.add("modal-open");
+  }
+
+
+  function close3DGallery() {
+
+    const gallery = document.getElementById("gallery3d");
+
+    gallery.classList.remove("is-open");
+    gallery.setAttribute("aria-hidden", "true");
+
+    document.body.classList.remove("modal-open");
+  }
+
+
+  function set3DGalleryImage(src, alt) {
+
+    const image = document.getElementById("gallery3d-main");
+
+    image.src = src;
+    image.alt = alt;
+  }
+
+
+  document.addEventListener("keydown", function(event) {
+
+    if (event.key === "Escape") {
+      close3DGallery();
+    }
+
+  });
+
+
+  document
+    .getElementById("gallery3d")
+    .addEventListener("click", function(event) {
+
+      if (event.target === this) {
+        close3DGallery();
+      }
+
+    });
 
 
 </body>
