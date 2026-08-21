@@ -729,6 +729,17 @@
     /* =========================================
    09. ART & PRODUCTION
 ========================================= */
+    .art-3d-image {
+  width: 100%;
+  height: 100%;
+
+  display: block;
+
+  object-fit: contain;
+  object-position: center;
+
+  background: #050608;
+}
 .art-environment-image {
   width: 100%;
   height: 100%;
@@ -1481,11 +1492,13 @@
 
     <article class="art-card">
 
-      <div class="art-media">
-        <span class="art-placeholder">
-          3D ART PREVIEW
-        </span>
-      </div>
+    <div class="art-media">
+      <img
+        class="art-3d-image"
+        src="3d-apartment-environment.png"
+        alt="3D apartment environment modeling project"
+      >
+    </div>
 
       <div class="art-content">
 
