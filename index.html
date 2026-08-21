@@ -782,7 +782,20 @@
 
   text-transform: uppercase;
 }
+.art-aelion-sprite {
+  width: 32px;
+  height: 32px;
 
+  background-image: url("aelion-idle.png");
+  background-repeat: no-repeat;
+
+  image-rendering: pixelated;
+  image-rendering: crisp-edges;
+
+  transform: scale(7);
+
+  animation: aelionIdle 0.8s steps(4) infinite;
+}
 .art-content {
   padding: 26px;
 }
@@ -1397,11 +1410,9 @@
 
     <article class="art-card">
 
-      <div class="art-media">
-        <span class="art-placeholder">
-          PIXEL ART PREVIEW
-        </span>
-      </div>
+    <div class="art-media">
+      <div class="art-aelion-sprite"></div>
+    </div>
 
       <div class="art-content">
 
