@@ -729,7 +729,18 @@
     /* =========================================
    09. ART & PRODUCTION
 ========================================= */
+.art-environment-image {
+  width: 100%;
+  height: 100%;
 
+  display: block;
+
+  object-fit: cover;
+  object-position: center;
+
+  image-rendering: pixelated;
+  image-rendering: crisp-edges;
+}
 #art {
   border-top: 1px solid var(--border);
 }
@@ -1438,11 +1449,13 @@
 
     <article class="art-card">
 
-      <div class="art-media">
-        <span class="art-placeholder">
-          ENVIRONMENT PREVIEW
-        </span>
-      </div>
+<div class="art-media">
+  <img
+    class="art-environment-image"
+    src="aquelarre-environment-showcase.png"
+    alt="Aquelarre environment art showcase"
+  >
+</div>
 
       <div class="art-content">
 
