@@ -1616,7 +1616,6 @@ body.modal-open {
   </span>
 
 </div>
-</div>
 
       <div class="art-content">
 
@@ -1817,8 +1816,14 @@ body.modal-open {
 
     </div>
 
-  </footer>
-    aria-hidden="true"
+ <!-- =========================================
+     ENVIRONMENT ART PREVIEW
+========================================== -->
+
+<div
+  id="environmentPreview"
+  class="gallery-modal"
+  aria-hidden="true"
 >
 
   <button
@@ -1952,15 +1957,7 @@ body.modal-open {
 
 </div>
 
-document
-  .getElementById("environmentPreview")
-  .addEventListener("click", function(event) {
 
-    if (event.target === this) {
-      closeEnvironmentPreview();
-    }
-
-  });
 <script>
   function openEnvironmentPreview() {
 
@@ -2035,6 +2032,15 @@ if (event.key === "Escape") {
       }
 
     });
+  document
+  .getElementById("environmentPreview")
+  .addEventListener("click", function(event) {
+
+    if (event.target === this) {
+      closeEnvironmentPreview();
+    }
+
+  });
 </script>
 
 </body>
