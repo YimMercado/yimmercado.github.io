@@ -1230,6 +1230,46 @@ body.modal-open {
     display: grid;
     grid-template-columns: 1fr;
   }
+  .aelion-idle-directions {
+  width: 192px;
+  height: 192px;
+
+  background-image: url("aelion-idle-directions-spritesheet.png");
+  background-repeat: no-repeat;
+  background-position: 0 0;
+
+  image-rendering: pixelated;
+  image-rendering: crisp-edges;
+
+  animation: aelionDirectionsIdle 0.8s linear infinite;
+}
+
+@keyframes aelionDirectionsIdle {
+
+  0%,
+  24.99% {
+    background-position: 0 0;
+  }
+
+  25%,
+  49.99% {
+    background-position: -192px 0;
+  }
+
+  50%,
+  74.99% {
+    background-position: -384px 0;
+  }
+
+  75%,
+  99.99% {
+    background-position: -576px 0;
+  }
+
+  100% {
+    background-position: 0 0;
+  }
+}
 
 }
   </style>
@@ -1581,7 +1621,7 @@ body.modal-open {
     <article class="art-card">
 
     <div class="art-media">
-      <div class="art-aelion-sprite"></div>
+      <div class="aelion-idle-directions"></div>
     </div>
 
       <div class="art-content">
