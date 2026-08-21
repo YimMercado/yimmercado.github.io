@@ -1597,12 +1597,25 @@ body.modal-open {
 
     <article class="art-card">
 
-<div class="art-media">
+<div
+  class="art-media art-media-clickable"
+  onclick="openEnvironmentPreview()"
+  role="button"
+  tabindex="0"
+  onkeydown="if(event.key === 'Enter') openEnvironmentPreview()"
+>
+
   <img
     class="art-environment-image"
     src="aquelarre-environment-showcase.png"
     alt="Aquelarre environment art showcase"
   >
+
+  <span class="art-media-overlay">
+    VIEW FULL IMAGE
+  </span>
+
+</div>
 </div>
 
       <div class="art-content">
@@ -1805,6 +1818,31 @@ body.modal-open {
     </div>
 
   </footer>
+    aria-hidden="true"
+>
+
+  <button
+    class="gallery-close"
+    onclick="closeEnvironmentPreview()"
+    aria-label="Close environment preview"
+  >
+    ×
+  </button>
+
+  <div class="gallery-dialog">
+
+    <div class="gallery-main">
+
+      <img
+        src="aquelarre-environment-showcase.png"
+        alt="Aquelarre environment art showcase"
+      >
+
+    </div>
+
+  </div>
+
+</div>
 <!-- =========================================
      3D MODELING GALLERY
 ========================================== -->
@@ -1914,8 +1952,38 @@ body.modal-open {
 
 </div>
 
+document
+  .getElementById("environmentPreview")
+  .addEventListener("click", function(event) {
 
+    if (event.target === this) {
+      closeEnvironmentPreview();
+    }
+
+  });
 <script>
+  function openEnvironmentPreview() {
+
+  const preview =
+    document.getElementById("environmentPreview");
+
+  preview.classList.add("is-open");
+  preview.setAttribute("aria-hidden", "false");
+
+  document.body.classList.add("modal-open");
+}
+
+
+function closeEnvironmentPreview() {
+
+  const preview =
+    document.getElementById("environmentPreview");
+
+  preview.classList.remove("is-open");
+  preview.setAttribute("aria-hidden", "true");
+
+  document.body.classList.remove("modal-open");
+}
 
   function open3DGallery() {
 
@@ -1950,9 +2018,10 @@ body.modal-open {
 
   document.addEventListener("keydown", function(event) {
 
-    if (event.key === "Escape") {
-      close3DGallery();
-    }
+if (event.key === "Escape") {
+  close3DGallery();
+  closeEnvironmentPreview();
+}
 
   });
 
