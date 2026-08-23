@@ -1274,6 +1274,49 @@ body.modal-open {
   100% {
     background-position: 0 0;
   }
+  /* Aelion directional walk showcase */
+
+.aelion-walk-directions {
+  width: 192px;
+  height: 192px;
+
+  margin: auto;
+
+  background-image: url("aelion-walk-directions-spritesheet.png");
+  background-repeat: no-repeat;
+  background-position: 0 0;
+
+  image-rendering: pixelated;
+  image-rendering: crisp-edges;
+
+  animation: aelionDirectionsWalk 0.8s linear infinite;
+}
+
+@keyframes aelionDirectionsWalk {
+
+  0%,
+  24.99% {
+    background-position: 0 0;
+  }
+
+  25%,
+  49.99% {
+    background-position: -192px 0;
+  }
+
+  50%,
+  74.99% {
+    background-position: -384px 0;
+  }
+
+  75%,
+  99.99% {
+    background-position: -576px 0;
+  }
+
+  100% {
+    background-position: 0 0;
+  }
 }
   </style>
 </head>
@@ -1623,9 +1666,12 @@ body.modal-open {
 
     <article class="art-card">
 
-    <div class="art-media">
-      <div class="aelion-idle-directions"></div>
-    </div>
+    <div class="project-image pixel-gallery-trigger" id="pixelArtTrigger">
+  <div class="aelion-idle-directions"></div>
+  <div class="gallery-overlay">
+    <span>VIEW GALLERY</span>
+  </div>
+</div>
 
       <div class="art-content">
 
@@ -2095,6 +2141,61 @@ if (event.key === "Escape") {
     }
 
   });
+  <!-- Pixel Art Gallery Modal -->
+<div id="pixelArtModal" class="gallery-modal">
+  <button class="gallery-close" id="pixelArtClose" aria-label="Close gallery">×</button>
+
+  <div class="gallery-modal-content pixel-art-modal-content">
+    
+    <div class="pixel-showcase-block">
+      <div class="pixel-showcase-stage">
+        <div class="aelion-idle-directions"></div>
+      </div>
+      <h3>Aelion — Directional Idle</h3>
+      <p>4-direction idle showcase for the main character.</p>
+    </div>
+
+    <div class="pixel-showcase-block">
+      <div class="pixel-showcase-stage">
+        <div class="aelion-walk-directions"></div>
+      </div>
+      <h3>Aelion — Directional Walk</h3>
+      <p>4-direction walking showcase using gameplay-ready sprite frames.</p>
+    </div>
+
+  </div>
+</div>
+  <script>
+  const pixelArtTrigger = document.getElementById("pixelArtTrigger");
+  const pixelArtModal = document.getElementById("pixelArtModal");
+  const pixelArtClose = document.getElementById("pixelArtClose");
+
+  function closePixelArtModal() {
+    pixelArtModal.classList.remove("active");
+    document.body.style.overflow = "";
+  }
+
+  if (pixelArtTrigger && pixelArtModal && pixelArtClose) {
+    pixelArtTrigger.addEventListener("click", () => {
+      pixelArtModal.classList.add("active");
+      document.body.style.overflow = "hidden";
+    });
+
+    pixelArtClose.addEventListener("click", closePixelArtModal);
+
+    pixelArtModal.addEventListener("click", (event) => {
+      if (event.target === pixelArtModal) {
+        closePixelArtModal();
+      }
+    });
+
+    document.addEventListener("keydown", (event) => {
+      if (event.key === "Escape" && pixelArtModal.classList.contains("active")) {
+        closePixelArtModal();
+      }
+    });
+  }
+</script>
 </script>
 
 </body>
