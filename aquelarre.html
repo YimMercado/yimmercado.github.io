@@ -472,7 +472,88 @@
       font-size: 0.83rem;
     }
 
+/* =========================================
+   CORE GAMEPLAY LOOP
+========================================= */
 
+.loop-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+
+  margin-top: 45px;
+}
+
+.loop-step {
+  position: relative;
+
+  min-height: 150px;
+
+  padding: 24px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  background: var(--bg-soft);
+
+  border: 1px solid var(--border);
+}
+
+.loop-step-number {
+  color: var(--cyan);
+
+  font-size: 0.62rem;
+  font-weight: 800;
+
+  letter-spacing: 0.12em;
+}
+
+.loop-step h3 {
+  margin-top: 35px;
+
+  font-size: 1rem;
+  line-height: 1.3;
+}
+
+.loop-step.final {
+  background:
+    linear-gradient(
+      135deg,
+      rgba(73, 216, 232, 0.08),
+      rgba(105, 35, 59, 0.08)
+    ),
+    var(--bg-soft);
+
+  border-color: var(--cyan);
+}
+
+.loop-note {
+  max-width: 760px;
+
+  margin-top: 24px;
+
+  color: var(--text-soft);
+
+  font-size: 0.85rem;
+  line-height: 1.7;
+}
+
+@media (max-width: 950px) {
+
+  .loop-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+}
+
+@media (max-width: 600px) {
+
+  .loop-grid {
+    grid-template-columns: 1fr;
+  }
+
+}
     /* =========================================
        SYSTEM STATUS
     ========================================= */
@@ -1064,6 +1145,26 @@
     </section>
 
 
+      <h3>
+        Observe<br>
+        Consequences
+      </h3>
+
+    </article>
+
+
+  </div>
+
+
+  <p class="loop-note">
+
+    Consequences can generate new information, opportunities
+    and conflicts, feeding the player back into exploration
+    and beginning the loop again.
+
+  </p>
+
+</section>
 
     <!-- =========================================
          IMPLEMENTED SYSTEMS
