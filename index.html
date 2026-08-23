@@ -1271,9 +1271,12 @@ body.modal-open {
     background-position: -576px 0;
   }
 
-  100% {
-    background-position: 0 0;
-  }
+100% {
+  background-position: 0 0;
+}
+
+}
+
   /* Aelion directional walk showcase */
 
 .aelion-walk-directions {
@@ -1317,6 +1320,58 @@ body.modal-open {
   100% {
     background-position: 0 0;
   }
+}
+    /* Pixel Art Gallery */
+
+.pixel-gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px;
+}
+
+.pixel-showcase-block {
+  padding: 24px;
+
+  background: var(--bg-soft);
+  border: 1px solid var(--border);
+}
+
+.pixel-showcase-stage {
+  min-height: 280px;
+
+  margin-bottom: 20px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  overflow: hidden;
+
+  background:
+    linear-gradient(
+      135deg,
+      rgba(73, 216, 232, 0.08),
+      rgba(105, 35, 59, 0.10)
+    ),
+    var(--card);
+}
+
+.pixel-showcase-block h3 {
+  margin-bottom: 8px;
+  font-size: 1.05rem;
+}
+
+.pixel-showcase-block p {
+  color: var(--text-soft);
+  font-size: 0.83rem;
+}
+
+@media (max-width: 700px) {
+
+  .pixel-gallery-grid {
+    grid-template-columns: 1fr;
+  }
+
 }
   </style>
 </head>
@@ -1666,11 +1721,20 @@ body.modal-open {
 
     <article class="art-card">
 
-    <div class="project-image pixel-gallery-trigger" id="pixelArtTrigger">
+<div
+  class="art-media art-media-clickable"
+  onclick="openPixelArtGallery()"
+  role="button"
+  tabindex="0"
+  onkeydown="if(event.key === 'Enter') openPixelArtGallery()"
+>
+
   <div class="aelion-idle-directions"></div>
-  <div class="gallery-overlay">
-    <span>VIEW GALLERY</span>
-  </div>
+
+  <span class="art-media-overlay">
+    VIEW GALLERY
+  </span>
+
 </div>
 
       <div class="art-content">
@@ -2057,7 +2121,58 @@ body.modal-open {
 
 </div>
 
+  class="gallery-modal"
+  aria-hidden="true"
+>
 
+  <button
+    class="gallery-close"
+    onclick="closePixelArtGallery()"
+    aria-label="Close Pixel Art gallery"
+  >
+    ×
+  </button>
+
+  <div class="gallery-dialog">
+
+    <div class="pixel-gallery-grid">
+
+
+      <article class="pixel-showcase-block">
+
+        <div class="pixel-showcase-stage">
+          <div class="aelion-idle-directions"></div>
+        </div>
+
+        <h3>Aelion — Directional Idle</h3>
+
+        <p>
+          Four-direction idle animation showcase.
+        </p>
+
+      </article>
+
+
+      <article class="pixel-showcase-block">
+
+        <div class="pixel-showcase-stage">
+          <div class="aelion-walk-directions"></div>
+        </div>
+
+        <h3>Aelion — Directional Walk</h3>
+
+        <p>
+          Four-direction walking animation showcase.
+        </p>
+
+      </article>
+
+
+    </div>
+
+  </div>
+
+</div>
 <script>
   function openEnvironmentPreview() {
 
@@ -2081,7 +2196,28 @@ function closeEnvironmentPreview() {
 
   document.body.classList.remove("modal-open");
 }
+function openPixelArtGallery() {
 
+  const gallery =
+    document.getElementById("pixelArtModal");
+
+  gallery.classList.add("is-open");
+  gallery.setAttribute("aria-hidden", "false");
+
+  document.body.classList.add("modal-open");
+}
+
+
+function closePixelArtGallery() {
+
+  const gallery =
+    document.getElementById("pixelArtModal");
+
+  gallery.classList.remove("is-open");
+  gallery.setAttribute("aria-hidden", "true");
+
+  document.body.classList.remove("modal-open");
+}
   function open3DGallery() {
 
     const gallery = document.getElementById("gallery3d");
@@ -2118,6 +2254,7 @@ function closeEnvironmentPreview() {
 if (event.key === "Escape") {
   close3DGallery();
   closeEnvironmentPreview();
+  closePixelArtGallery();
 }
 
   });
@@ -2141,61 +2278,15 @@ if (event.key === "Escape") {
     }
 
   });
-  <!-- Pixel Art Gallery Modal -->
-<div id="pixelArtModal" class="gallery-modal">
-  <button class="gallery-close" id="pixelArtClose" aria-label="Close gallery">×</button>
+document
+  .getElementById("pixelArtModal")
+  .addEventListener("click", function(event) {
 
-  <div class="gallery-modal-content pixel-art-modal-content">
-    
-    <div class="pixel-showcase-block">
-      <div class="pixel-showcase-stage">
-        <div class="aelion-idle-directions"></div>
-      </div>
-      <h3>Aelion — Directional Idle</h3>
-      <p>4-direction idle showcase for the main character.</p>
-    </div>
+    if (event.target === this) {
+      closePixelArtGallery();
+    }
 
-    <div class="pixel-showcase-block">
-      <div class="pixel-showcase-stage">
-        <div class="aelion-walk-directions"></div>
-      </div>
-      <h3>Aelion — Directional Walk</h3>
-      <p>4-direction walking showcase using gameplay-ready sprite frames.</p>
-    </div>
-
-  </div>
-</div>
-  <script>
-  const pixelArtTrigger = document.getElementById("pixelArtTrigger");
-  const pixelArtModal = document.getElementById("pixelArtModal");
-  const pixelArtClose = document.getElementById("pixelArtClose");
-
-  function closePixelArtModal() {
-    pixelArtModal.classList.remove("active");
-    document.body.style.overflow = "";
-  }
-
-  if (pixelArtTrigger && pixelArtModal && pixelArtClose) {
-    pixelArtTrigger.addEventListener("click", () => {
-      pixelArtModal.classList.add("active");
-      document.body.style.overflow = "hidden";
-    });
-
-    pixelArtClose.addEventListener("click", closePixelArtModal);
-
-    pixelArtModal.addEventListener("click", (event) => {
-      if (event.target === pixelArtModal) {
-        closePixelArtModal();
-      }
-    });
-
-    document.addEventListener("keydown", (event) => {
-      if (event.key === "Escape" && pixelArtModal.classList.contains("active")) {
-        closePixelArtModal();
-      }
-    });
-  }
-</script>
+  });
 </script>
 
 </body>
